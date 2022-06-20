@@ -109,3 +109,36 @@ func LiberationSansItalic() ([]byte, error) {
 func LiberationSansRegular() ([]byte, error) {
 	return loadFromRice("LiberationSans-Regular.ttf", "liberations sans regular")
 }
+
+func NewKlavikaFamily() (*FontFamily, error) {
+	bold, err := KlavikaBold()
+	if err != nil {
+		return nil, err
+	}
+	italic, err := KlavikaItalic()
+	if err != nil {
+		return nil, err
+	}
+	normal, err := KlavikaRegular()
+	if err != nil {
+		return nil, err
+	}
+	return &FontFamily{
+		Name:   "klavika",
+		Bold:   bold,
+		Italic: italic,
+		Normal: normal,
+	}, nil
+}
+
+func KlavikaBold() ([]byte, error) {
+	return loadFromRice("klavika-bold.otf", "klavika bold")
+}
+
+func KlavikaItalic() ([]byte, error) {
+	return loadFromRice("klavika-regular-italic.otf", "klavika italic")
+}
+
+func KlavikaRegular() ([]byte, error) {
+	return loadFromRice("klavika-medium.otf", "klavika regular")
+}
